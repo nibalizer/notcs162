@@ -1,10 +1,12 @@
 #include <stdio.h>
 
 int main(){
-    int one = 1;
-    printf('%d', one);
-    one = one << 1;
-    printf('%d', one);
+    int one = 8;
+    printf("%d\n", one);
+    one = one >> 1;
+    printf("%d\n", one);
+    one = one >> 1;
+    printf("%d\n", one);
     return 0;
 }
 
