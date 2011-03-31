@@ -81,65 +81,59 @@ void process_words(char line[]){
     int i;
     int forward_backward = 1;
     for (i= 0; line[i] != '\0'  ; i++){
-        cout << forward_backward << endl;
         temp = line[i];
         if (temp == 32){
             forward_backward = forward_backward * -1;
-            output[i] = ((char)(32));
+            output[i] = ((char)(32)); 
         }
-        else if ((98 <= temp <= 121) || (66 <= temp <= 89)){
+        if ((('b' <= temp) && (temp <= 'y'))|| (('B' <= temp) && (temp <= 'Y'))){
+        //else if ('b' <= temp <= 'y')'Y')){
+
             output[i] = ((char)(temp + forward_backward));
         }
-        else if (forward_backward == 1){
+        if (forward_backward == 1){
             switch (temp){
-                case 97:
-                    output[i] = ((char)(98));
+                case 'a':
+                    output[i] = 'b';
                     break;
-                case 65:
-                    output[i] = ((char)(66));
+                case 'A':
+                    output[i] = 'B';
                     break;
-                case 122:
-                    output[i] = ((char)(97));
+                case 'z':
+                    output[i] = 'a';
                     break;
-                case 90:
-                    output[i] = ((char)(65));
+                case 'Z':
+                    output[i] = 'A';
                     break;
             }
         }
-        else if (forward_backward == -1){
-            cout << "made it" << endl;
+        if (forward_backward == -1){
             switch (temp){
-                case 97:
-                    output[i] = ((char)(122));
+                case 'a':
+                    output[i] = 'z';
                     break;
-                case 65:
-                    output[i] = ((char)(90));
+                case 'A':
+                    output[i] = 'Z';
                     break;
-                case 122:
-                    output[i] = ((char)(121));
+                case 'z':
+                    output[i] = 'y';
                     break;
-                case 90:
-                    output[i] = ((char)(89));
+                case 'Z':
+                    output[i] = 'Y';
                     break;
             }
-        }
-        else {
-            output[i] = ((char)(temp));
         }
     }
 
 
     cout << output << endl;
-    cout << line[0] << endl;
-    cout << ((char)(line[0] + 1)) << endl;
-    cout << ((char)(line[1] + -1)) << endl;
 }
 
 void compress_word(){
     cout << "Please enter a list of words to compress, 80 chars max." << endl;
     char line[80];
     cout << " Type a line terminated by carriage return\n>";
-    cin.get( line, 25);
+    cin.get( line, 80);
     cout << " " << line << endl;
     process_words(line);
 }
