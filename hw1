@@ -1,0 +1,67 @@
+hw 1
+spencer krum
+may 1 2010
+
+Algorithm for being successful at cs162:
+
+   1) check d2l once per week
+   2) post to d2l discussions once per week
+   3) Do hw
+   4) Do programs
+   5) check hw against requirements page
+   6) turn in via d2l
+
+Good/Bad Program
+
+
+Bad
+int main(){while(int i = i++){int p = i;};}
+
+Good
+int main(){
+    //randomly accept whatever is already in i
+    while(int i = i++){ //increase i until something fails
+    int p = i; //assign p to the value of i
+//profit
+}
+
+Ethics
+
+Google stores not only your search history, but which links you click on. This
+is an invasion of my privacy and I am pretty upset about it really. 
+
+
+C++ Syntax
+
+
+
+struct bankaccount {
+    float balance;
+    string account_Holder;
+    string mailing_address;
+    string phone-number;
+};
+
+bankaccount myaccount;
+
+
+bankaccount myaccounts[100];
+
+
+int i = 0;
+for(i =0; i<100; i++){
+    cout << myaccounts[i].balance << endl;
+}
+ 
+
+class library {
+    private:
+        video videos[20];
+        mag mags[30];
+        book books[100];
+    public:
+        void add_object(thing);
+        void remove_object(thing);
+        void get_details(thing);
+        
+}
