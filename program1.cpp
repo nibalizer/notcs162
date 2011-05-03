@@ -56,6 +56,8 @@
 
 
 #include <iostream>
+#include <string.h>
+
 
 using namespace std;
 
@@ -80,7 +82,7 @@ void process_words(char line[]){
     char temp;
     int i;
     int forward_backward = 1;
-    for (i= 0; line[i] != '\0'  ; i++){
+    for (i= 0; i < strlen(line); i++){
         temp = line[i];
         if (temp == 32){
             forward_backward = forward_backward * -1;
@@ -90,6 +92,8 @@ void process_words(char line[]){
         //else if ('b' <= temp <= 'y')'Y')){
 
             output[i] = ((char)(temp + forward_backward));
+        } else {
+            output[i] = temp;
         }
         if (forward_backward == 1){
             switch (temp){
