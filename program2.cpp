@@ -27,7 +27,7 @@ using namespace std;
 
 //define our calcuiation structure
 struct calculation {
-    double number; //of the form 3.1415926535897932384626
+    float number; //of the form 3.1415926535897932384626
     char * operation; //of the form *, /, +, -
     char * description;
 };
@@ -39,8 +39,8 @@ void welcome(){
 }
 
 //function to get floating point number from user
-double get_number(){
-    double number;
+float get_number(){
+    float number;
     //number = 3.1415926535897932384626;
     cout << "Please enter a number: " << endl;
     cin >> number;
@@ -54,6 +54,7 @@ char * get_operation(){
     char operation[2];
     cout << "Please enter an operation(as one letter '*', '/', '+', '-' : " << endl;
     cin.get(operation, 3, '\n');
+    cin.ignore(3,'\n');
     return operation;
 }
 
@@ -63,6 +64,7 @@ char * get_description(){
     char  description[80]= "The cost of one oil change.";
     cout << "Please enter a discription of this number: " << endl;
     cin.get(description, 80, '\n');
+    cin.ignore(80,'\n');
     return description;
 }
 
@@ -73,8 +75,34 @@ void usage(){
        << "and a short description of the number's significance" << endl;
 }
 
+//function to printout subtotal
+float subtotal(float& total, char operation[], float& number){
+    switch (operation[0])
+    {
+        case '/':
+            total = total / number;
+            break;
+
+        case '*':
+            total = total * number;
+            break;
+
+        case '+':
+            total = total + number;
+            break;
+
+        case '-':
+            total = total - number;
+            break;
+        default:
+            cout << "DUN GOOFED" << endl;
+            cout << operation[0] << endl;
+    }
+    cout << total << endl;
+}
+
 //function to populate a struct of calculations
-void populate(calculation history[]){
+void populate(calculation history[], float& total){
     //we know length is 10, or 9 zero indexed
     // in a more complicated program with variable length of array
     // we would pass in an int length
@@ -83,11 +111,23 @@ void populate(calculation history[]){
     //for loop over our array
     for (int i = 0; i <= length; i++){
         usage();                                        //print usage
-        history[i].number = get_number();               //function to streamline this
         history[i].operation = get_operation();         //function to streamline this
+        history[i].number = get_number();               //function to streamline this
         history[i].description = get_description();        //function to streamline this
+        //function to printout subtotal
+        subtotal(total, history[i].operation, history[i].number);
 
     }
+}
+
+float get_initial_number(){
+    float number;
+    //number = 3.1415926535897932384626;
+    cout << "Please enter a number: " << endl;
+    cin >> number;
+    cin.ignore();
+    return number;
+
 }
 
 void printout(calculation history[]){
@@ -110,8 +150,8 @@ int main(){
     //welcome the user
     welcome();
     //init an array of length 10 of type calculation
+    float total = get_initial_number();
     calculation history[10];
-    populate(history);
-    printout(history);
+    populate(history, total);
     return 0;
 }
