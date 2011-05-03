@@ -76,27 +76,24 @@ void usage(){
 }
 
 //function to printout subtotal
-float subtotal(float& total, char operation[], float& number){
-    switch (operation[0])
+float subtotal(float& total, char operation, float& number){
+    switch (operation)
     {
         case '/':
             total = total / number;
             break;
-
         case '*':
             total = total * number;
             break;
-
         case '+':
             total = total + number;
             break;
-
         case '-':
             total = total - number;
             break;
         default:
             cout << "DUN GOOFED" << endl;
-            cout << operation[0] << endl;
+            cout << operation << endl;
     }
     cout << total << endl;
 }
@@ -115,7 +112,8 @@ void populate(calculation history[], float& total){
         history[i].number = get_number();               //function to streamline this
         history[i].description = get_description();        //function to streamline this
         //function to printout subtotal
-        subtotal(total, history[i].operation, history[i].number);
+        //cout << history[i].operation << endl;
+        subtotal(total, history[i].operation[0], history[i].number);
 
     }
 }
