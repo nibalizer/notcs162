@@ -30,6 +30,7 @@ struct calculation {
     float number; //of the form 3.1415926535897932384626
     char * operation; //of the form *, /, +, -
     char * description;
+    float subtotal;
 };
 
 //welcome function
@@ -96,6 +97,7 @@ float subtotal(float& total, char operation, float& number){
             cout << operation << endl;
     }
     cout << total << endl;
+    return float;
 }
 
 //function to populate a struct of calculations
@@ -113,7 +115,7 @@ void populate(calculation history[], float& total){
         history[i].description = get_description();        //function to streamline this
         //function to printout subtotal
         //cout << history[i].operation << endl;
-        subtotal(total, history[i].operation[0], history[i].number);
+        history[i].subtotal = subtotal(total, history[i].operation[0], history[i].number);
 
     }
 }
@@ -128,17 +130,19 @@ float get_initial_number(){
 
 }
 
-void printout(calculation history[]){
+void printout(float initial, calculation history[]){
     //we know length is 10, or 9 zero indexed
     // in a more complicated program with variable length of array
     // we would pass in an int length
     
+    cout << "Initial value was: " << initial << endl;
     int length = 9;
     //for loop over our array
     for (int i = 0; i <= length; i++){
         cout << history[i].number << endl;
         cout << history[i].operation << endl;
         cout << history[i].description << endl;
+        cout << history[i].subtotal << endl;
 
     }
 }
@@ -149,7 +153,9 @@ int main(){
     welcome();
     //init an array of length 10 of type calculation
     float total = get_initial_number();
+    float initial = total;
     calculation history[10];
     populate(history, total);
+    printout(initial, history);
     return 0;
 }
