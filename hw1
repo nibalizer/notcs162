@@ -11,57 +11,71 @@ Algorithm for being successful at cs162:
    5) check hw against requirements page
    6) turn in via d2l
 
-Good/Bad Program
+Style
 
-
-Bad
-int main(){while(int i = i++){int p = i;};}
-
-Good
-int main(){
-    //randomly accept whatever is already in i
-    while(int i = i++){ //increase i until something fails
-    int p = i; //assign p to the value of i
-//profit
-}
+I Think about consistent tabbing and indentation. It is helpful to have 
+a standard form of naming variables and functions. I also like comments
+that are succinct and helpful. 
 
 Ethics
 
-Google stores not only your search history, but which links you click on. This
-is an invasion of my privacy and I am pretty upset about it really. 
+It is important to explain what is happening to the user. If the program
+calculates a number for the user it is imperative that the program explain
+what kind of uncertainty exists in the value, both from floating point
+error and numerical approximations in the algorithm. It is especially 
+important to enumerate what, if any, assumptions were made behind the math/physics.
 
 
-C++ Syntax
+C++
 
+1.      Create three different valid variables to hold your age, first name, and hourly wage.
+        int age;
+        char * name;
+        float wage;
 
+2.      Show an example of an invalid identifier
+        .bad
 
-struct bankaccount {
-    float balance;
-    string account_Holder;
-    string mailing_address;
-    string phone-number;
-};
+3.      Show the difference between the + and the += operators. Explain why you would use the += instead of the +
+        p += 7 //increases p by 7
+        t = p + 7 // assigns t to the value p + 7, leaves p well alone
 
-bankaccount myaccount;
+4.      What is the different between the prefix and postfix ++ operator. Show an example of when it would be best to use each of them.
+        prefix is evaluated before, postfix is evaluated after
+        it is best to use postfix in a for loop
+        it is best to use prefix when overcoming offbyone errors or zero index errors
 
+5.      Create a variable just large enough to hold your full name
+        char specnerkrum[11];
 
-bankaccount myaccounts[100];
+6.      Show how to read in your full name into this variable
+        cin.get(spencerkrum, 11, '\n')
 
+7.      Show how to capitalize just the first letter of both your first and last name
+        for(int i = 0; i < len(s); i++){
+            if (s[i-1] == ' '){
+                s[i] = toUpper(s[i]);
+            }
+        }
 
-int i = 0;
-for(i =0; i<100; i++){
-    cout << myaccounts[i].balance << endl;
-}
- 
+8.      Now, use strcmp and strlen in an example
+        char * p;
+        char * s;
+        if (strcmp(s,p)){
+            if (strlen(s) != strclen(p)){
+                cout << "Whaaaaat" << endl;
+            }
+        }
 
-class library {
-    private:
-        video videos[20];
-        mag mags[30];
-        book books[100];
-    public:
-        void add_object(thing);
-        void remove_object(thing);
-        void get_details(thing);
-        
-}
+9.      Write a prototype for a function that will return nothing and supply a char (by reference) and an integer (by value) as arguments
+        void lasers(char& foo; int number);
+
+10.  Write a function that reads in someone’s name, age and salary and supply this information back to the calling routine through the argument list (hint: pass by reference)
+        void lasers(char name[]; char salary[]; int& age){
+            cout << "Enter Name: " << endl;
+            cin.get(name, 80, '\n');
+            cout << "Enter salary: " << endl;
+            cin.get(salary, 80, '\n');
+            cout << "Enter age: " << endl;
+            cin >> age;
+        }
